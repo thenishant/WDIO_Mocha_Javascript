@@ -27,7 +27,7 @@ export const config = {
             browserName: 'chrome',
             acceptInsecureCerts: true,
             'goog:chromeOptions': {
-                binary: '/Users/nishant/Development/Personal/WDIO_Mocha_Javascript/chrome/mac_arm-119.0.6045.105/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing',
+                // binary: '/Users/nishant/Development/Personal/WDIO_Mocha_Javascript/chrome/mac_arm-119.0.6045.105/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing',
                 args: [
                     '--no-sandbox',
                     '--disable-infobars',
