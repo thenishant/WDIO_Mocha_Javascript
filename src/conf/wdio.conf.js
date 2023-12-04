@@ -7,7 +7,7 @@ export const config = {
     specs: [
         '../test/generated/*.js', // Include the generated test files
     ],
-    maxInstances: 20,
+    maxInstances: 40,
     capabilities: [
         {
             browserName: 'chrome',
@@ -24,7 +24,7 @@ export const config = {
             },
         },
     ],
-    concurrency: 20,
+    concurrency: 40,
 
     // ... other configuration options ...
 
