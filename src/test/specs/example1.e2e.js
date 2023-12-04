@@ -1,5 +1,5 @@
-// test.js
-const assert = require("assert");
+import * as assert from "assert";
+
 describe('Sample Test', () => {
     it('should run on multiple channels and labels', () => {
         // Access the channel and label from browser capabilities

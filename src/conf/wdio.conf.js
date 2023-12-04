@@ -1,5 +1,3 @@
-// wdio.conf.js
-import video_reporter from 'wdio-video-reporter';
 import allure from '@wdio/allure-reporter';
 import { setOptions } from 'expect-webdriverio';
 
