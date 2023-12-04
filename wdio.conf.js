@@ -4,12 +4,6 @@ global.allure = allure;
 let channel1 = 'Channel1';
 
 export const config = {
-
-    mochaOpts: {
-        grep: '@channel1', // Adjust this pattern accordingly
-        // ... other Mocha options
-    },
-
     runner: 'local',
     specs: ['./src/test/generated/*.js'],
 
@@ -27,7 +21,7 @@ export const config = {
             // ...
         ]
     },
-    maxInstances: 100,
+    maxInstances: 5,
     capabilities: [
         {
             browserName: 'chrome',
