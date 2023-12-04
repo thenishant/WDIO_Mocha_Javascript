@@ -1,3 +1,5 @@
+// generateTests.js
+
 import fs from 'fs';
 import path from 'path';
 
@@ -10,17 +12,17 @@ function generateLabels(count) {
 }
 
 const channels = ['channel1', 'channel2', 'channel3', 'channel4'];
-const labels = generateLabels(50);
+const labels = generateLabels(60);
 
 const currentModuleDir = path.dirname(new URL(import.meta.url).pathname);
 const generatedTestsDir = path.join(currentModuleDir, './generated');
 
 // Ensure that the directory exists
-fs.mkdirSync(generatedTestsDir, {recursive: true});
+fs.mkdirSync(generatedTestsDir, { recursive: true });
 
 channels.forEach((channel) => {
     labels.forEach((label) => {
-        const testName = `Test suite for Channel: ${channel}, Label: ${label}`;
+        const testName = `Test suite for Channel @${channel}, Label ${label}`;
         const testContent = `
             import allure from '@wdio/allure-reporter';
 
@@ -41,7 +43,7 @@ channels.forEach((channel) => {
             });
         `;
 
-        const filePath = path.join(generatedTestsDir, `${label}_${channel}.js`);
+        const filePath = path.join(generatedTestsDir, `${channel}_${label}.js`);
 
         fs.writeFileSync(filePath, testContent);
     });

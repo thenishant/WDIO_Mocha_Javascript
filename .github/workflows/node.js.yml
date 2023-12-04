@@ -1,8 +1,13 @@
 name: CI
 on: [ push, pull_request ]
+
 jobs:
     build:
         runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                channel: [ 'channel1', 'channel2', 'channel3', 'channel4' ]
+
         steps:
             -   name: Checkout
                 uses: actions/checkout@v4
@@ -15,10 +20,10 @@ jobs:
                 run: npm install
 
             -   name: Generate test files
-                run: node src/test/generateTests.js
+                run: node generateTests.js
 
-            -   name: Test
-                run: npm run test
+            -   name: Run Channel Tests
+                run: npm run test --suite ${{ matrix.channel }}
 
             -   uses: actions/upload-artifact@v1
                 if: failure()

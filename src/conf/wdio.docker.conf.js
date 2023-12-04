@@ -1,4 +1,4 @@
-import { config as sharedConfig } from './wdio.conf';
+import { config as sharedConfig } from '../../wdio.conf.js';
 
 exports.config = {
     ...sharedConfig,
