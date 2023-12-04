@@ -1,68 +1,38 @@
 import allure from '@wdio/allure-reporter';
-import { setOptions } from 'expect-webdriverio';
 
 global.allure = allure;
 
 export const config = {
     runner: 'local',
     specs: [
-        '../test/specs/**.js'
+        '../test/generated/*.js', // Include the generated test files
     ],
-    exclude: [
-        // 'path/to/excluded/files'
+    maxInstances: 20,
+    capabilities: [
+        {
+            browserName: 'chrome',
+            acceptInsecureCerts: true,
+            'goog:chromeOptions': {
+                binary: '/Users/nishant/Development/Personal/WDIO_Mocha_Javascript/chrome/mac_arm-119.0.6045.105/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing',
+                args: [
+                    '--no-sandbox',
+                    '--disable-infobars',
+                    '--disable-gpu',
+                    '--headless',
+                    '--window-size=1440,735'
+                ],
+            },
+        },
     ],
-    maxInstances: 10, // Number of browser instances to run in parallel
-    capabilities: generateCapabilities(),
-    concurrency: 5, // Number of tests to run concurrently
+    concurrency: 20,
 
     // ... other configuration options ...
 
-    before: function (capabilities, specs) {
-        setOptions({ wait: 2000, interval: 100 });
+    before: function () {
+        // Your setup logic before tests
     },
 
-    afterTest: async function (test, context, { error, result, duration, passed, retries }) {
-        if (error) {
-            await browser.takeScreenshot();
-        }
-    },
-};
-
-function generateCapabilities() {
-    const channels = ['channel1', 'channel2', 'channel3', 'channel4'];
-    const labels = generateLabels(1);
-
-    const capabilities = [];
-
-    channels.forEach((channel) => {
-        labels.forEach((label) => {
-            capabilities.push({
-                browserName: 'chrome',
-                acceptInsecureCerts: true,
-                'goog:chromeOptions': {
-                    args: [
-                        '--no-sandbox',
-                        '--disable-infobars',
-                        '--disable-gpu',
-                        '--headless',
-                        '--window-size=1440,735'
-                    ],
-                },
-                'bstack:options': {
-                    channel,
-                    label,
-                },
-            });
-        });
-    });
-
-    return capabilities;
-}
-
-function generateLabels(count) {
-    const labels = [];
-    for (let i = 1; i <= count; i++) {
-        labels.push(`label${i}`);
+    after: function () {
+        // Your teardown logic after all tests
     }
-    return labels;
-}
+};
