@@ -2,62 +2,74 @@ name: CI
 on: [ push, pull_request ]
 
 jobs:
-    build:
-        runs-on: ubuntu-latest
-        steps:
-            -   name: Checkout
-                uses: actions/checkout@v4
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
 
-            -   uses: actions/setup-node@v3
-                with:
-                    node-version: 18
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
 
-            -   name: Install
-                run: npm install
+      - name: Install
+        run: npm install
 
-            -   name: Generate test files
-                run: node src/test/generateTests.js
+      - name: Generate test files
+        run: node src/test/generateTests.js
 
-    Channel1-Test:
-        name: Channel1 Test
-        needs: [ build ]
-        runs-on: ubuntu-latest
-        steps:
-            -   name: Checkout
-                uses: actions/checkout@v4
+  Channel1-Test:
+    name: Channel1 Test
+    needs: [ build ]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
 
-            -   name: Run Tests
-                run: npm run test --suite channel1
+      - name: Install Dependencies
+        run: npm install
 
-    Channel2-Test:
-        name: Channel2 Test
-        needs: [ build ]
-        runs-on: ubuntu-latest
-        steps:
-            -   name: Checkout
-                uses: actions/checkout@v4
+      - name: Run Tests
+        run: npm run test --suite channel1
 
-            -   name: Run Tests
-                run: npm run test --suite channel2
+  Channel2-Test:
+    name: Channel2 Test
+    needs: [ build ]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
 
-    Channel3-Test:
-        name: Channel3 Test
-        needs: [ build ]
-        runs-on: ubuntu-latest
-        steps:
-            -   name: Checkout
-                uses: actions/checkout@v4
+      - name: Install Dependencies
+        run: npm install
 
-            -   name: Run Tests
-                run: npm run test --suite channel3
+      - name: Run Tests
+        run: npm run test --suite channel2
 
-    Channel4-Test:
-        name: Channel4 Test
-        needs: [ build ]
-        runs-on: ubuntu-latest
-        steps:
-            -   name: Checkout
-                uses: actions/checkout@v4
+  Channel3-Test:
+    name: Channel3 Test
+    needs: [ build ]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
 
-            -   name: Run Tests
-                run: npm run test --suite channel4
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run Tests
+        run: npm run test --suite channel3
+
+  Channel4-Test:
+    name: Channel4 Test
+    needs: [ build ]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run Tests
+        run: npm run test --suite channel4
