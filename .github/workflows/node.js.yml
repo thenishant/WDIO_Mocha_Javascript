@@ -39,9 +39,10 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: generated-tests
+          path: generated-tests
 
       - name: Run Tests
         run: |
           mkdir test
-          cp -r generated-tests/* test
+          cp -r generated-tests/* test/generated
           npm run test --suite ${{ matrix.channel }}
