@@ -3,7 +3,7 @@ import allure from '@wdio/allure-reporter';
 global.allure = allure;
 let channel1 = 'Channel1';
 
-let testPath = 'generated-tests';
+let testPath = 'test';
 export const config = {
     runner: 'local',
     specs: [`${testPath}/*.js`],

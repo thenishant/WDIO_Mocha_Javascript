@@ -42,5 +42,6 @@ jobs:
 
       - name: Run Tests
         run: |
-          ls -al
+          mkdir test
+          cp -r generated-tests/* test
           npm run test --suite ${{ matrix.channel }}
