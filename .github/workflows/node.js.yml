@@ -41,4 +41,6 @@ jobs:
           name: generated-tests
 
       - name: Run Tests
-        run: npm run test --suite ${{ matrix.channel }}
+        run: |
+          ls -al
+          npm run test --suite ${{ matrix.channel }}
