@@ -4,11 +4,6 @@ on: [ push, pull_request ]
 jobs:
     build:
         runs-on: ubuntu-latest
-
-        strategy:
-            matrix:
-                suite: [ channel1, channel3, channel4 ]
-
         steps:
             -   name: Checkout
                 uses: actions/checkout@v4
@@ -20,14 +15,42 @@ jobs:
             -   name: Install
                 run: npm install
 
+    Generate-test:
+        name: Generate test files
+        needs: [ build ]
+        runs-on: ubuntu-latest
+        steps:
             -   name: Generate test files
                 run: node src/test/generateTests.js
 
+    Channel1-Test:
+        name: Channel1 Test
+        needs: [ Generate-test ]
+        runs-on: ubuntu-latest
+        steps:
             -   name: Run Tests
-                run: npm run test --suite ${{ matrix.suite }}
+                run: npm run test --suite channel1
 
-            -   uses: actions/upload-artifact@v1
-                if: failure()
-                with:
-                    name: logs
-                    path: logs
+    Channel2-Test:
+        name: Channel2 Test
+        needs: [ Generate-test ]
+        runs-on: ubuntu-latest
+        steps:
+            -   name: Run Tests
+                run: npm run test --suite channel2
+
+    Channel3-Test:
+        name: Channel3 Test
+        needs: [ Generate-test ]
+        runs-on: ubuntu-latest
+        steps:
+            -   name: Run Tests
+                run: npm run test --suite channel3
+
+    Channel4-Test:
+        name: Channel4 Test
+        needs: [ Generate-test ]
+        runs-on: ubuntu-latest
+        steps:
+            -   name: Run Tests
+                run: npm run test --suite channel4

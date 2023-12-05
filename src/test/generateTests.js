@@ -35,7 +35,7 @@ channels.forEach((channel) => {
             describe("${testName}", () => {
                 it("should have your test logic", async() => {
                     // Your test logic here
-                    await sleep(5000); // Sleep for 5 seconds
+                    await sleep(20000); // Sleep for 20 seconds
                     console.log("Running test on channel: ${channel}, label: ${label}");
                     const pageTitle = browser.getTitle();
                     // assert.strictEqual(pageTitle, 'Your Expected Page Title');

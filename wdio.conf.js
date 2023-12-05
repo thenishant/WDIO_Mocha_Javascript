@@ -21,7 +21,7 @@ export const config = {
             // ...
         ]
     },
-    maxInstances: 5,
+    maxInstances: 100,
     capabilities: [
         {
             browserName: 'chrome',
@@ -40,13 +40,10 @@ export const config = {
     ],
     // concurrency: 20,
 
-    // ... other configuration options ...
 
     before: function () {
-        // Your setup logic before tests
     },
 
     after: function () {
-        // Your teardown logic after all tests
     }
 };
