@@ -17,11 +17,9 @@ export const config = {
         ], channel4: [
             './src/test/generated/channel4_*.js',
         ],
-        otherFeature: [
-            // ...
-        ]
+
     },
-    maxInstances: 100,
+    maxInstances: 20,
     capabilities: [
         {
             browserName: 'chrome',
