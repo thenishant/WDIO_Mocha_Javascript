@@ -20,7 +20,7 @@ export const config = {
     ],
 
   },
-  maxInstances: 20,
+  maxInstances: 100,
   framework: 'mocha',
   mochaOpts: {
     timeout: 60000
