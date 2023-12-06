@@ -27,17 +27,7 @@
   },
   "scripts": {
     "test": "npx wdio wdio.conf.js",
-    "pretest:docker": "docker-compose up -d",
-    "test:docker": "npx wdio ./src/conf/wdio.docker.conf.js",
-    "posttest:docker": "docker-compose down",
-    "checkupdates": "npx npm-check-updates -u",
-    "cleanup": "rmdir /Q /S reports",
-    "generateAllureReport": "allure generate ./reports/video-reports/allure-raw -o ./reports/video-reports/allure-report --clean && allure open ./reports/video-reports/allure-report",
-    "allurereport:ci": "allure generate ./reports/video-reports/allure-raw -o ./reports/video-reports/allure-report --clean"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Thangarajtk/WDIO_Mocha_Javascript.git"
+    "checkupdates": "npx npm-check-updates -u"
   },
   "keywords": [
     "WebdriverIO",

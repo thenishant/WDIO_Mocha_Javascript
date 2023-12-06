@@ -45,4 +45,4 @@ jobs:
         run: |
           mkdir test
           cp -r generated-tests/* test
-          npm run test --suite ${{ matrix.channel }}
+          npm run test -- --suite ${{ matrix.channel }}
